@@ -50,7 +50,7 @@ A Django app has been created under `/apps/` called `crm`
    N:B You are to design an appropriate frontend for task in a & b above
 3. Assuming you have been asked to tweak the code such that a client can have wallets in multiple currency, how will you approach this.
 
-      * ANSWER: 
+      * ANSWER: Change the DecimalField in the client wallet to MoneyField which is gotten from the django-money python package which will be installed. MoneyField has a similar operation to DecimalField and it also has exchange rate support and uses the py-moneyed package with money and currency class implementation. Another python package that can be used is django-currencies. 
 
 
 \*\*\* Optional
