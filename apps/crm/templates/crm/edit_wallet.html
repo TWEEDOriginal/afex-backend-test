@@ -1,0 +1,5 @@
+{% extends 'crm/index.html' %} {%block content %}
+
+<h1>Edit Wallet for  {{wallet.client.first_name}} {{wallet.client.last_name}} CID: {{wallet.client.cid}}</h1>
+
+{% include "form.html" with form=form button='Update Wallet Details' %} {% endblock %}

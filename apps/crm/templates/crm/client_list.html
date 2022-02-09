@@ -1,0 +1,28 @@
+{% extends 'crm/index.html' %} {%block content %}
+<h1>List of clients</h1>
+<div>
+{% for client in client_list %}
+<p>
+  <a style="margin-left: 30px" href="{% url 'client_detail' client.pk %}"
+    >{{client.first_name}} {{client.last_name}} CID: "{{client.cid}}" details</a
+  >
+  <a style="margin-left: 30px" href="{% url 'edit_client' client.pk %}">Edit</a>
+  <a style="margin-left: 30px" href="{% url 'delete_client' client.pk %}"
+    >Delete</a
+  >
+  {% if client.client_wallet %}
+  <a
+  href="{% url 'edit_wallet' client.client_wallet.pk %}"
+    style="margin-left: 30px"
+    >Edit Wallet</a
+  >
+  {% else %}
+  <a href="{% url 'create_wallet' client.pk %}" style="margin-left: 30px"
+    >Add Wallet</a
+  >
+  {% endif %}
+</p>
+{% endfor %}
+
+</div>
+{% endblock %}

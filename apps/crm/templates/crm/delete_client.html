@@ -1,0 +1,13 @@
+{% extends 'crm/index.html' %} {% block content %}
+<h1>Delete Client</h1>
+<div>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <p>
+      Are you sure you want to delete client "{{ object.first_name}}
+      {{object.last_name}}" with CID {{object.cid}}?
+    </p>
+    <input type="submit" value="confirm" />
+  </form>
+</div>
+{% endblock %}

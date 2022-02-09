@@ -1,0 +1,46 @@
+{% extends 'crm/index.html' %} {%block content %}
+<div>
+  <h1>Client details</h1>
+
+  <p>Customer ID: {{client.cid}}</p>
+  <p>Customer Name: {{client.first_name}} {{client.last_name}}</p>
+  <p>Client Type: {{client.client_type}}</p>
+  <p>Country Code: {{client.country_code}}</p>
+  <p>Email: {{client.email}}</p>
+  <p>Address: {{client.address}}</p>
+  <p>Phone: {{client.phone}}</p>
+  <p>Created: {{client.created}}</p>
+  <p>Last Edited: {{client.updated}}</p>
+  <p>Created By: {{client.created_by}}</p>
+</div>
+
+<div class="btn-group">
+  <a style="margin-left: 30px" href="{% url 'edit_client' client.pk %}">Edit</a>
+  <a style="margin-left: 30px" href="{% url 'delete_client' client.pk %}"
+    >Delete</a
+  >
+  {% if client.client_wallet %}
+  <a
+    href="{% url 'edit_wallet' client.client_wallet.pk %}"
+    style="margin-left: 30px"
+    >Edit Wallet</a
+  >
+  {% else %}
+  <a href="{% url 'create_wallet' client.pk %}" style="margin-left: 30px"
+    >Add Wallet</a
+  >
+  {% endif %}
+</div>
+
+{% if client.client_wallet %}
+<div class="wallet-div">
+  <h2>Client Wallet details</h2>
+  <p>Total Balance: {{client.client_wallet.total_balance}}</p>
+  <p>Available Balance: {{client.client_wallet.available_balance}}</p>
+  <p>Lien Balance: {{client.client_wallet.lien_balance}}</p>
+  <p>Cash Advance Limit: {{client.client_wallet.cash_advance_limit}}</p>
+  <p>Cash Advance Spent: {{client.client_wallet.cash_advance_spent}}</p>
+  <p>Created: {{client.client_wallet.created}}</p>
+  <p>Last Edited: {{client.client_wallet.updated}}</p>
+</div>
+{% endif %} {% endblock %}
