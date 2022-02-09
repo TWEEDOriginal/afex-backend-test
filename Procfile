@@ -1,0 +1,1 @@
+web: gunicorn cowrywise_backend_test.wsgi --log-file -
